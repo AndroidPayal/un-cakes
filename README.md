@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UN Cakes & Decor
 
-## Getting Started
+A small business catalogue built with Next.js App Router. Product data lives in `src/data/products.ts`; orders are sent through WhatsApp after the shop confirms availability.
 
-First, run the development server:
+## Add or update products
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Put a product photo in `public/products/` (create the folder if needed). Use a short filename such as `red-velvet-cake.jpg`.
+2. Open `src/data/products.ts` and add an item to the `products` array:
+
+```ts
+{
+  id: "red-velvet-cake", // unique, URL-safe id
+  name: "Red velvet cake",
+  price: 1200, // number in rupees; use 0 when the price is not set
+  description: "Soft red velvet with cream cheese frosting.",
+  category: "cakes-materials",
+  image: "/products/red-velvet-cake.jpg",
+  // url: "https://your-live-site.example/#red-velvet-cake", // optional
+},
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use one of these category ids: `cakes-materials` (cakes and baking raw materials), `gift-hampers`, or `packaging` (cake packaging and products). Leave out `image` until a real photo is available; the catalogue shows a placeholder. Prices should be confirmed before publishing. A price of `0` displays as “Price on request.”
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## WhatsApp setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env.local` for local work and in your hosting provider’s environment settings for deployment. Enter the business number with country code using international digits only, without `+`, spaces, or punctuation. For example, the format is `91` followed by the local number; use the shop’s actual number. Restart the dev server after changing `.env.local`. The number is public because visitors’ browsers need it to open WhatsApp.
 
-## Learn More
+## Run locally
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open http://localhost:3000. Before launch, check product names, descriptions, prices, photos, location and social links against the shop’s confirmed details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
+Push this project to a Git provider, import the repository into Vercel, and set `NEXT_PUBLIC_WHATSAPP_NUMBER` in the project’s environment variables for Production (and Preview if needed). Deploy, then open the live site on desktop and mobile and test a product order link. Future changes to product data and photos can be committed and pushed; Vercel will build and publish them automatically. For another Node hosting provider, use `npm run build` followed by `npm run start` and configure the same environment variable there.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Checks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
