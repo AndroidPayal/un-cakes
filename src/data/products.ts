@@ -324,4 +324,47 @@ export const products: Product[] = [
     category: "packaging",
     image: "/products/packaging-5.jpeg",
   },
+  //----------------
+
+  {
+    id: "packaging-6",
+    name: "Zigzag Candle",
+    price: 25,
+    description:
+      "These long, thin candles are twisted or bent into a playful zigzag or corkscrew wave.",
+    category: "packaging",
+    image: "/products/packaging-6.jpeg",
+  },
+  {
+    id: "packaging-7",
+    name: "Number Candle",
+    price: 20,
+    description: "A candle denotes age of person",
+    category: "packaging",
+    image: "/products/packaging-7.jpeg",
+  },
+  {
+    id: "packaging-8",
+    name: "Fairy light",
+    price: 18,
+    description: "Lights in a foldable wire.",
+    category: "packaging",
+    image: "/products/packaging-8.jpeg",
+  },
+  {
+    id: "packaging-9",
+    name: "Happy B'day Stick",
+    price: 10,
+    description: "Stick size 3-inch",
+    category: "packaging",
+    image: "/products/packaging-9.jpeg",
+  },
+  {
+    id: "packaging-9-2",
+    name: "Happy B'day Stick",
+    price: 30,
+    description: "Stick size 5-inch",
+    category: "packaging",
+    image: "/products/packaging-9.jpeg",
+  },
 ];
